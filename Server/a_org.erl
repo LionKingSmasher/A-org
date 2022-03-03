@@ -5,7 +5,7 @@
 
 start_server() ->
 	Pid = spawn_link(fun() ->
-		{ok, LSocket} = gen_tcp:listen(6666, [binary, {active, false}, {ip, {127.0.0.1}}]),
+		{ok, LSocket} = gen_tcp:listen(6666, [binary, {active, false}, {ip, {127,0,0,1}}]),
 		spawn(fun() -> acceptState(LSocket) end),
 		timer:sleep(infinity)
 		end),
@@ -19,5 +19,6 @@ acceptState(LSocket) ->
 handler(ASocket) ->
 	inet:setopts(ASocket, [{active, once}]),
 	receive
-		{tcp, ASocket, <<BinaryData/binary>>}
+		{tcp, ASocket, <<"s:",Code/binary>>} ->
+			gen_tcp:send(ASocket, "Teset OK!~n")
 	end.

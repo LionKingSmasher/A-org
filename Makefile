@@ -1,8 +1,7 @@
 all: compile
 
-compile:
-	if [ ! -d "ebin/" ]; then \
-		mkdir ebin/ ;\
-	fi
+client:
+	make -C ./Client
 
-	erlc -pa ebin/ -o ebin/ 
+server:
+	make -C ./Server
