@@ -3,6 +3,8 @@
 
 -export([start_server/0]).
 
+-include("enum.hrl").
+
 start_server() ->
 	Pid = spawn_link(fun() ->
 		{ok, LSocket} = gen_tcp:listen(6666, [binary, {active, false}, {ip, {127,0,0,1}}]),
@@ -20,5 +22,10 @@ handler(ASocket) ->
 	inet:setopts(ASocket, [{active, once}]),
 	receive
 		{tcp, ASocket, <<"s:",Code/binary>>} ->
-			gen_tcp:send(ASocket, "Teset OK!~n")
+			if
+				Code == <<"">>->
+					io:format("TO-DO~n");
+				true ->
+					io:format("TO-DO~n")
+			end
 	end.

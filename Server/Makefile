@@ -5,4 +5,7 @@ compile:
 		mkdir ebin/ ;\
 	fi
 
-	erlc -pa ebin/ -o ebin/ 
+	erlc -pa ebin/ -o ebin/ *.erl
+
+clear:
+	rm -rf ebin/

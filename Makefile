@@ -1,4 +1,4 @@
-all: compile
+all: client server 
 
 client:
 	make -C ./Client
