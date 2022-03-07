@@ -5,9 +5,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Sun Mar  6 21:51:44 2022
+# Make data base, printed on Mon Mar  7 21:46:54 2022
 
 # Variables
 
@@ -84,9 +83,9 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-SESSION_MANAGER = local/shinpc-15ZG990-GP70KN:@/tmp/.ICE-unix/2608,unix/shinpc-15ZG990-GP70KN:/tmp/.ICE-unix/2608
+SESSION_MANAGER = local/shinpc-15ZG990-GP70KN:@/tmp/.ICE-unix/2735,unix/shinpc-15ZG990-GP70KN:/tmp/.ICE-unix/2735
 # environment
-JUPYTER_CONFIG_DATA = /home/shinpc/.vscode/extensions/ms-toolsai.vscode-ai-remote-0.7.0/jupyterConfigData.json
+XDG_RUNTIME_DIR = /run/user/1000
 # environment
 TEXTDOMAIN = im-config
 # environment
@@ -104,7 +103,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 26255
+GIO_LAUNCHED_DESKTOP_FILE_PID = 4048
 # automatic
 %F = $(notdir $%)
 # environment
@@ -118,7 +117,7 @@ PWD = /home/shinpc/Documents/PlayGround/erlang/A
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 2700
+SSH_AGENT_PID = 2827
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -162,7 +161,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-9c845044-cf20-4858-9bc3-bf41901bbf2b.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-79cebf05-9dbf-4a1c-bef6-e24a19e9dd56.sock
 # environment
 XDG_SESSION_ID = 2
 # environment
@@ -199,6 +198,8 @@ BREAKPAD_DUMP_LOCATION = /home/shinpc/.config/Code/exthost Crash Reports
 GDK_BACKEND = x11
 # environment
 LC_PAPER = ko_KR.UTF-8
+# makefile (from 'Makefile', line 1)
+SUB_DIR = Client/ Server/ 
 # environment
 QT_ACCESSIBILITY = 1
 # environment
@@ -211,7 +212,6 @@ MAKEFILES :=
 LC_NUMERIC = ko_KR.UTF-8
 # automatic
 <F = $(notdir $<)
- 
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
@@ -239,14 +239,11 @@ LC_IDENTIFICATION = ko_KR.UTF-8
 # environment
 LC_ADDRESS = ko_KR.UTF-8
 # environment
-XDG_RUNTIME_DIR = /run/user/1000
-# environment
 LANG = C
 # environment
-VSCODE_PID = 26255
+VSCODE_PID = 4048
 # variable set hash-table stats:
- 
-# Load=116/1024=11%, Rehash=0, Collisions=21/144=15%
+# Load=116/1024=11%, Rehash=0, Collisions=20/144=14%
 
 # Pattern-specific Variable Values
 
@@ -263,6 +260,15 @@ VSCODE_PID = 26255
 # No implicit rules.
 
 # Files
+
+clear:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 14):
+	for i in $(SUB_DIR); do \
+		make -C $$i clear;        \
+	done
 
 all: client server
 #  Command line target.
@@ -283,7 +289,6 @@ client:
 # @ := client
 # automatic
 # % := 
- 
 # automatic
 # * := 
 # automatic
@@ -292,13 +297,14 @@ client:
 # | := 
 # automatic
 # < := 
+ 
 # automatic
 # ^ := 
 # automatic
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
-#  recipe to execute (from 'Makefile', line 4):
+#  recipe to execute (from 'Makefile', line 8):
 	make -C ./Client
 
 # Not a target:
@@ -310,7 +316,7 @@ client:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-03-06 20:45:01.459367364
+#  Last modified 2022-03-07 21:39:03.599151446
 #  File has been updated.
 #  Successfully updated.
 
@@ -318,7 +324,7 @@ server:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 7):
+#  recipe to execute (from 'Makefile', line 11):
 	make -C ./Server
 
 # Not a target:
@@ -327,20 +333,27 @@ server:
 #  Modification time never checked.
 #  File has not been updated.
 
+install:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 19):
+	make -C Client/ install
+
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/22=0%
+# Load=8/1024=1%, Rehash=0, Collisions=0/24=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 15 / storage = 120 B / avg = 8 B
-# current buf: size = 8162 B / used = 120 B / count = 15 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 17 / storage = 134 B / avg = 7 B
+# current buf: size = 8162 B / used = 134 B / count = 17 / avg = 7 B
 
-# strcache performance: lookups = 26 / hit rate = 42%
+# strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
-# Load=15/8192=0%, Rehash=0, Collisions=4/26=15%
-# Finished Make data base on Sun Mar  6 21:51:44 2022
+# Load=17/8192=0%, Rehash=0, Collisions=4/30=13%
+# Finished Make data base on Mon Mar  7 21:46:54 2022
 
  

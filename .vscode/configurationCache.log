@@ -1,15 +1,1 @@
-{
-    "buildTargets": [
-        "all",
-        "client",
-        "server"
-    ],
-    "launchTargets": [],
-    "customConfigurationProvider": {
-        "workspaceBrowse": {
-            "browsePath": [],
-            "compilerArgs": []
-        },
-        "fileIndex": []
-    }
-}
+{"buildTargets":["all","clear","client","install","server"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

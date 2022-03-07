@@ -23,8 +23,10 @@ handler(ASocket) ->
 	receive
 		{tcp, ASocket, <<"s:",Code/binary>>} ->
 			if
-				Code == <<"">>->
-					io:format("TO-DO~n");
+				Code == <<0>>->
+					io:format("Client Connect!~n"),
+					gen_tcp:send("~d", [1]),
+					handler(ASocket);
 				true ->
 					io:format("TO-DO~n")
 			end

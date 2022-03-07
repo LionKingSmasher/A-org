@@ -56,6 +56,8 @@ namespace A{
         void connectToServer();
         void sendToServer(enum AProtocolConst protocol);
         void closeToServer();
+        void giveFile(const char*);
+        void giveFile(std::string);
     };
 };
 

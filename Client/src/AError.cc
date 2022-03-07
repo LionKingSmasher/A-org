@@ -11,7 +11,7 @@ int ConnectFailedException::error_num(){
     return error_code;
 }
 
-ostream& operator<<(ostream& os, ConnectFailedException& except){
+ostream& A::Exception::operator<<(ostream& os, ConnectFailedException& except){
     os << "[A.org] ConnectFailedException: " << except.error_msg() << " (" << except.error_num() << ")";
     return os; 
 }
@@ -26,7 +26,7 @@ int SendFailedException::error_num(){
     return error_code;
 }
 
-ostream& operator<<(ostream& os, SendFailedException& except){
+ostream& A::Exception::operator<<(ostream& os, SendFailedException& except){
     os << "[A.org] SendFailedException: " << except.error_msg() << " (" << except.error_num() << ")"; 
     return os;
 }
@@ -41,7 +41,7 @@ int CloseFailedException::error_num(){
     return error_code;
 }
 
-ostream& operator<<(ostream& os, CloseFailedException& except){
+ostream& A::Exception::operator<<(ostream& os, CloseFailedException& except){
     os << "[A.org] CloseFailedException: " << except.error_msg() << " (" << except.error_num() << ")"; 
     return os;
 }
