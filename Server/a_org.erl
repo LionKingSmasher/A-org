@@ -15,7 +15,7 @@ start_server() ->
 
 acceptState(LSocket) ->
 	{ok, ASocket} = gen_tcp:accept(LSocket),
-	spawn(fun() -> acceptState(ASocket) end),
+	spawn(fun() -> acceptState(LSocket) end),
 	handler(ASocket).
 
 handler(ASocket) ->
@@ -23,11 +23,19 @@ handler(ASocket) ->
 	receive
 		{tcp, ASocket, <<"s:",Code/binary>>} ->
 			if
-				Code == <<0>>->
-					io:format("Client Connect!~n"),
-					gen_tcp:send("~d", [1]),
+				Code == <<?ACLIENT_CONNECT_CHECK>>->
+					io:format("[A.org] Client Connect!~n"),
+					gen_tcp:send(ASocket, <<?A_OK>>),
 					handler(ASocket);
+				Code == <<?ACLIENT_CONNECT_CLOSE>>->
+					io:format("[A.org] Client Close!~n"),
+					gen_tcp:close(ASocket);
 				true ->
 					io:format("TO-DO~n")
-			end
+			end;
+		{tcp, ASocket, Message} ->
+			io:format("~s ~s~n", ["test:", Message]),
+			io:format("Client Connect!~n"),
+			gen_tcp:send(ASocket, "test2"),
+			handler(ASocket)
 	end.

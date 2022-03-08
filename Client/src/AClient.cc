@@ -5,8 +5,12 @@ using namespace A::Exception;
 
 template<>
 void AClient<AUserType::AUSER_CLIENT>::connectToServer(){
+    char recv;
     server_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if(connect(server_fd, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) < 0) goto error;
+    recv = sendToServer(AProtocolConst::CONNECT_CHECK);
+    if(!recv) goto error;
+    AError_success("Server Connect Complete!");
     connectStatus = true;
     return;
 error:
@@ -15,23 +19,15 @@ error:
 }
 
 template<>
-void AClient<AUserType::AUSER_CLIENT>::sendToServer(enum AProtocolConst protocol){
-    char received_msg[64];
+char AClient<AUserType::AUSER_CLIENT>::sendToServer(enum AProtocolConst protocol){
+    char received_msg[3];
     int err;
     if(connectStatus){
         std::string msg = "s:";
         msg += (char)protocol;
-        if((err = write(server_fd, msg.c_str(), 3)) < 0) goto error;\
-        AError_success("Write Complete!\n");
-        if(read(server_fd, received_msg, 1) < 0) goto error;
-        printf("Recv: %x\n", received_msg[0]);
-        switch(received_msg[0]){
-        case 1:
-            AError_success("Send Complete!");
-            break;
-        default:
-            goto error;
-        }
+        if((err = write(server_fd, msg.c_str(), 3)) < 0) goto error;
+        if(read(server_fd, received_msg, 3) < 0) goto error;
+        return received_msg[0];
     }
     else goto error;
     return;
@@ -47,7 +43,9 @@ template<>
 void AClient<AUserType::AUSER_CLIENT>::closeToServer() {
     if(connectStatus){
         AError_success("Success to close connection!");
+        sendToServer(AProtocolConst::CONNECT_CLOSE);
         close(server_fd);
+        connectStatus = false;
     }
     else goto error;
     return;
@@ -58,7 +56,13 @@ error:
 
 template<>
 void AClient<AUserType::AUSER_CLIENT>::giveFile(const char* file_name){
+    char recv = sendToServer(AProtocolConst::GIVE_FILE);
+    if(recv != 1){
 
+    }
+error:
+    AError_msg("Client is failed to download file!");
+    
 }
 
 template<>

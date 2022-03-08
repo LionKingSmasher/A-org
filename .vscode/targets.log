@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Mar  7 21:46:54 2022
+# Make data base, printed on Tue Mar  8 21:26:59 2022
 
 # Variables
 
@@ -83,7 +83,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-SESSION_MANAGER = local/shinpc-15ZG990-GP70KN:@/tmp/.ICE-unix/2735,unix/shinpc-15ZG990-GP70KN:/tmp/.ICE-unix/2735
+SESSION_MANAGER = local/shinpc-15ZG990-GP70KN:@/tmp/.ICE-unix/2522,unix/shinpc-15ZG990-GP70KN:/tmp/.ICE-unix/2522
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -103,7 +103,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 4048
+GIO_LAUNCHED_DESKTOP_FILE_PID = 13301
 # automatic
 %F = $(notdir $%)
 # environment
@@ -117,7 +117,7 @@ PWD = /home/shinpc/Documents/PlayGround/erlang/A
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 2827
+SSH_AGENT_PID = 2614
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -161,7 +161,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-79cebf05-9dbf-4a1c-bef6-e24a19e9dd56.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-188c2cb6-ade3-4444-ab9b-648dbbf7213b.sock
 # environment
 XDG_SESSION_ID = 2
 # environment
@@ -241,7 +241,7 @@ LC_ADDRESS = ko_KR.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 4048
+VSCODE_PID = 13301
 # variable set hash-table stats:
 # Load=116/1024=11%, Rehash=0, Collisions=20/144=14%
 
@@ -251,7 +251,7 @@ VSCODE_PID = 4048
 
 # Directories
 
-# . (device 2055, inode 8935920): 8 files, no impossibilities.
+# . (device 2071, inode 8935920): 8 files, no impossibilities.
 
 # 8 files, no impossibilities in 1 directories.
 
@@ -278,6 +278,7 @@ all: client server
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+ 
 
 client:
 #  Implicit rule search has not been done.
@@ -297,7 +298,6 @@ client:
 # | := 
 # automatic
 # < := 
- 
 # automatic
 # ^ := 
 # automatic
@@ -354,6 +354,6 @@ install:
 # strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=4/30=13%
-# Finished Make data base on Mon Mar  7 21:46:54 2022
+# Finished Make data base on Tue Mar  8 21:26:59 2022
 
  

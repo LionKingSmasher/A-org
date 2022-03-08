@@ -5,6 +5,7 @@ enum AProtocolConst {
     CONNECT_CHECK = 0,
     CONNECT_OK,
     CONNECT_FAIL,
+    CONNECT_CLOSE,
     GIVE_FILE = 0x66,
     GIVE_FILE_NAME,
     GIVE_FILE_SIZE,

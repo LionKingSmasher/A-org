@@ -33,15 +33,15 @@ ostream& A::Exception::operator<<(ostream& os, SendFailedException& except){
 //========================================================================
 
 //========================= CloseFailedException =========================
-std::string CloseFailedException::error_msg() {
+std::string DownloadFailedException::error_msg() {
     return msg;
 }
 
-int CloseFailedException::error_num(){
+int DownloadFailedException::error_num(){
     return error_code;
 }
 
-ostream& A::Exception::operator<<(ostream& os, CloseFailedException& except){
+ostream& A::Exception::operator<<(ostream& os, DownloadFailedException& except){
     os << "[A.org] CloseFailedException: " << except.error_msg() << " (" << except.error_num() << ")"; 
     return os;
 }

@@ -72,6 +72,19 @@ namespace A {
             int error_num() override;
             friend ostream& operator<<(std::ostream&, CloseFailedException&);
         };
+
+        class DownloadFailedException : public SuperException {
+        private:
+        public:
+            DownloadFailedException(const char* msg, int error_code = 0) {
+                this->msg = msg;
+                this->error_code = error_code;
+            }
+
+            std::string error_msg() override;
+            int error_num() override;
+            friend ostream& operator<<(std::ostream&, DownloadFailedException&);
+        };
     };
 };
 #endif
