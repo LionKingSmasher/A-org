@@ -23,3 +23,5 @@
 -define(A_OK, 1).
 -define(A_FAILED, 2).
 -define(A_DONE, 3).
+
+-define(CLOUD_DIR, "./Cloud/").

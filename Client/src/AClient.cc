@@ -56,13 +56,15 @@ error:
 
 template<>
 void AClient<AUserType::AUSER_CLIENT>::giveFile(const char* file_name){
+    unsigned char buffer[1024];
+    std::string msg = std::string(file_name);
     char recv = sendToServer(AProtocolConst::GIVE_FILE);
-    if(recv != 1){
-
-    }
+    if(recv != 1) goto error;
+    write(server_fd, msg.c_str(), msg.size() - 1);
+    return;
 error:
     AError_msg("Client is failed to download file!");
-    
+    throw DownloadFailedException("Dwonload Failed!");
 }
 
 template<>
