@@ -36,8 +36,6 @@ namespace A{
         bool connectStatus;
         struct sockaddr_in serverAddr;
         int server_fd;
-
-        char sendToServer(enum AProtocolConst protocol);
     public:
         AClient(const char* ip, unsigned short port){
             connectStatus = false;
@@ -55,6 +53,7 @@ namespace A{
                 close(server_fd);
         }
 
+        char sendToServer(enum AProtocolConst);
         void connectToServer();
         void closeToServer();
         void giveFile(const char*);

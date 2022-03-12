@@ -2,6 +2,20 @@
 #define __AERROR_H__
 #include <iostream>
 
+#define DECLARE_EXCEPTION_NORMAL(ExceptionName)                      \
+    class ExceptionName : public SuperException {                    \
+    private:                                                         \
+    public:                                                          \
+        ExceptionName(const char* msg, int error_code = 0) {       \
+            this->msg = msg;                                         \
+            this->error_code = error_code;                           \
+        }                                                            \
+                                                                     \
+        std::string error_msg() override;                            \
+        int error_num() override;                                    \
+        friend ostream& operator<<(std::ostream&, ExceptionName&); \
+    }
+
 using namespace std;
 
 namespace A {
@@ -34,57 +48,11 @@ namespace A {
             virtual int error_num() = 0;
         };
 
-        class ConnectFailedException : public SuperException {
-        private:
-        public:
-            ConnectFailedException(const char* msg, int error_code = 0) {
-                this->msg = msg;
-                this->error_code = error_code;
-            }
-
-            std::string error_msg() override;
-            int error_num() override;
-            friend ostream& operator<<(std::ostream&, ConnectFailedException&);
-        };
-
-        class SendFailedException : public SuperException {
-        private:
-        public:
-            SendFailedException(const char* msg, int error_code = 0) {
-                this->msg = msg;
-                this->error_code = error_code;
-            }
-
-            std::string error_msg() override;
-            int error_num() override;
-            friend ostream& operator<<(std::ostream&, SendFailedException&);
-        };
-
-        class CloseFailedException : public SuperException {
-        private:
-        public:
-            CloseFailedException(const char* msg, int error_code = 0) {
-                this->msg = msg;
-                this->error_code = error_code;
-            }
-
-            std::string error_msg() override;
-            int error_num() override;
-            friend ostream& operator<<(std::ostream&, CloseFailedException&);
-        };
-
-        class DownloadFailedException : public SuperException {
-        private:
-        public:
-            DownloadFailedException(const char* msg, int error_code = 0) {
-                this->msg = msg;
-                this->error_code = error_code;
-            }
-
-            std::string error_msg() override;
-            int error_num() override;
-            friend ostream& operator<<(std::ostream&, DownloadFailedException&);
-        };
+        DECLARE_EXCEPTION_NORMAL(ConnectFailedException);
+        DECLARE_EXCEPTION_NORMAL(SendFailedException);
+        DECLARE_EXCEPTION_NORMAL(CloseFailedException);
+        DECLARE_EXCEPTION_NORMAL(DownloadFailedException);
+        DECLARE_EXCEPTION_NORMAL(AFileOpenFailedException);
     };
 };
 #endif

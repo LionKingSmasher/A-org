@@ -24,7 +24,7 @@ init_server() ->
 			io:format("[A.org] Init Failed!");
 		true ->
 			io:format("[A.org] Init Complete!")
-	end,
+	end.
 
 acceptState(LSocket) ->
 	{ok, ASocket} = gen_tcp:accept(LSocket),
@@ -45,7 +45,7 @@ handler(ASocket) ->
 					gen_tcp:close(ASocket);
 				Code == <<?ACLIENT_GIVE_FILE>> ->
 					io:format("[A.org] Client response download!~n"),
-					download_handler(ASocket);
+					download_state(ASocket);
 				true ->
 					io:format("[A.org] Client Send Unknown Protocol~n")
 			end;
@@ -57,12 +57,13 @@ handler(ASocket) ->
 	end.
 
 download_state(ASocket) ->
-	inet:setopts(ASocket, [{active, once}]).
+	inet:setopts(ASocket, [{active, once}]),
 	receive
 		{tcp, ASocket, Filename} ->
+			FileName = ?CLOUD_DIR ++ binary_to_list(Filename),
+			CheckRegular = filelib:is_regular(FileName),
 			if
-				FileName = ?CLOUD_DIR ++ binary_to_list(Filename),
-				filelib:is_regular(FileName) == true ->
+				(CheckRegular == true) ->
 					download_handler(FileName, ASocket),
 					download_state(ASocket);
 				true ->
