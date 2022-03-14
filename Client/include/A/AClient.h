@@ -36,12 +36,14 @@ namespace A{
         bool connectStatus;
         struct sockaddr_in serverAddr;
         int server_fd;
+        AFile* afile;
     public:
         AClient(const char* ip, unsigned short port){
             connectStatus = false;
             serverAddr.sin_addr.s_addr = inet_addr(ip);
             serverAddr.sin_port = htons(port);
             serverAddr.sin_family = AF_INET;
+            afile = nullptr;
         }
 
         AClient(std::string ip, unsigned short port) {
@@ -51,6 +53,9 @@ namespace A{
         ~AClient(){
             if(connectStatus)
                 close(server_fd);
+
+            if(afile != nullptr)
+                delete afile;
         }
 
         char sendToServer(enum AProtocolConst);

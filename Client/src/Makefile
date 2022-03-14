@@ -1,6 +1,7 @@
 SOURCE_FILE =  \
 	AClient.cc \
 	AError.cc  \
+	AFile.cc   \
 
 CC=gcc
 

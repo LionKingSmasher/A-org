@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Mar 12 23:19:15 2022
+# Make data base, printed on Mon Mar 14 21:57:10 2022
 
 # Variables
 
@@ -83,7 +83,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-SESSION_MANAGER = local/shinpc-15ZG990-GP70KN:@/tmp/.ICE-unix/2509,unix/shinpc-15ZG990-GP70KN:/tmp/.ICE-unix/2509
+SESSION_MANAGER = local/shinpc-15ZG990-GP70KN:@/tmp/.ICE-unix/2368,unix/shinpc-15ZG990-GP70KN:/tmp/.ICE-unix/2368
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -103,7 +103,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 20041
+GIO_LAUNCHED_DESKTOP_FILE_PID = 11536
 # automatic
 %F = $(notdir $%)
 # environment
@@ -117,7 +117,7 @@ PWD = /home/shinpc/Documents/PlayGround/erlang/A
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 2601
+SSH_AGENT_PID = 2475
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -161,7 +161,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4eeb6161-399a-4264-8c35-28d5092bfc70.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-d9858efa-f0c9-42de-8f77-8d47733e6f71.sock
 # environment
 XDG_SESSION_ID = 2
 # environment
@@ -241,7 +241,7 @@ LC_ADDRESS = ko_KR.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 20041
+VSCODE_PID = 11536
 # variable set hash-table stats:
 # Load=116/1024=11%, Rehash=0, Collisions=20/144=14%
 
@@ -290,6 +290,7 @@ client:
 # automatic
 # % := 
 # automatic
+ 
 # * := 
 # automatic
 # + := 
@@ -302,7 +303,6 @@ client:
 # automatic
 # ? := 
 # variable set hash-table stats:
- 
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
 #  recipe to execute (from 'Makefile', line 8):
 	make -C ./Client
@@ -354,6 +354,6 @@ install:
 # strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=4/30=13%
-# Finished Make data base on Sat Mar 12 23:19:15 2022
+# Finished Make data base on Mon Mar 14 21:57:10 2022
 
  

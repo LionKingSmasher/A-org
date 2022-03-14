@@ -10,8 +10,9 @@ using namespace A;
 
 AFile::AFile(const char* filename) : open_status(true) {
     file_fd = open(filename, O_CREAT | O_WRONLY, 0644);
-    if(file_fd < 0){
-
+    if(file_fd < 0) {
+        open_status = false;
+        throw Exception::AFileOpenFailedException("File open failed!");
     }
 }
 
@@ -29,4 +30,8 @@ void AFile::writeData(u8* arr, size_t size){
 
 void AFile::writeData(const u8* arr, size_t size){
     writeData((u8*)arr, size);
+}
+
+ssize_t AFile::readData(u8* arr, size_t size){
+    return read(file_fd, arr, size);
 }

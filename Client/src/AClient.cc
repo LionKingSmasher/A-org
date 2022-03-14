@@ -1,9 +1,10 @@
 #include <A/AClient.h>
+#include <A/AFile.h>
 
 using namespace A;
 using namespace A::Exception;
 
-static void read_file_section(void) {
+static inline void read_file_section(AFile* file){
 
 }
 
@@ -49,9 +50,8 @@ void AClient<AUserType::AUSER_CLIENT>::closeToServer() {
         sendToServer(AProtocolConst::CONNECT_CLOSE);
         close(server_fd);
         connectStatus = false;
+        return;
     }
-    else goto error;
-    return;
 error:
     AError_msg("Client is not connect to server!");
     throw CloseFailedException("Close Failed");
