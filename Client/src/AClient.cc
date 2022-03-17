@@ -5,7 +5,7 @@ using namespace A;
 using namespace A::Exception;
 
 static inline void read_file_section(AFile* file){
-
+	
 }
 
 template<>

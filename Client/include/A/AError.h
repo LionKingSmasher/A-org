@@ -6,15 +6,26 @@
     class ExceptionName : public SuperException {                    \
     private:                                                         \
     public:                                                          \
-        ExceptionName(const char* msg, int error_code = 0) {       \
+        ExceptionName(const char* msg, int error_code = 0) {         \
             this->msg = msg;                                         \
             this->error_code = error_code;                           \
         }                                                            \
                                                                      \
         std::string error_msg() override;                            \
         int error_num() override;                                    \
-        friend ostream& operator<<(std::ostream&, ExceptionName&); \
+        friend ostream& operator<<(std::ostream&, ExceptionName&);   \
     }
+
+#define AERROR_AREA_START(X)                                         \
+	return;                                                      \
+	X:                                                         \
+	do {
+
+#define AERROR_AREA_END                                              \
+	} while(0)                                   
+
+#define AERROR_CALL(X)                                               \
+	goto X;
 
 using namespace std;
 
@@ -53,6 +64,7 @@ namespace A {
         DECLARE_EXCEPTION_NORMAL(CloseFailedException);
         DECLARE_EXCEPTION_NORMAL(DownloadFailedException);
         DECLARE_EXCEPTION_NORMAL(AFileOpenFailedException);
+	DECLARE_EXCEPTION_NORMAL(AFileCloseFailedException);
     };
 };
 #endif

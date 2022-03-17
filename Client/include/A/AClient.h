@@ -8,6 +8,7 @@
 //================== A-ORG ===================
 #include <A/AError.h>
 #include <A/AProtocolConst.h>
+#include <A/AFile.h>
 //=============== Header End =================
 
 #ifndef __ACLIENT_H__
