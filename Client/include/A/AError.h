@@ -22,10 +22,10 @@
 	do {
 
 #define AERROR_AREA_END                                              \
-	} while(0)                                   
+	} while(0);                                   
 
 #define AERROR_CALL(X)                                               \
-	goto X;
+	goto X
 
 using namespace std;
 
@@ -64,7 +64,7 @@ namespace A {
         DECLARE_EXCEPTION_NORMAL(CloseFailedException);
         DECLARE_EXCEPTION_NORMAL(DownloadFailedException);
         DECLARE_EXCEPTION_NORMAL(AFileOpenFailedException);
-	DECLARE_EXCEPTION_NORMAL(AFileCloseFailedException);
+    	DECLARE_EXCEPTION_NORMAL(AFileCloseFailedException);
     };
 };
 #endif

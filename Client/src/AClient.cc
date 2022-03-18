@@ -4,8 +4,11 @@
 using namespace A;
 using namespace A::Exception;
 
-static inline void read_file_section(AFile* file){
-	
+static inline void read_file_section(AFile* file, int fd){
+    u8 arr[1024] = {0,};
+    ssize_t size;
+	while((size = read(fd, arr, 1024)) > 0)
+        file->writeData(arr, size);
 }
 
 template<>
@@ -15,17 +18,21 @@ char AClient<AUserType::AUSER_CLIENT>::sendToServer(enum AProtocolConst protocol
     if(connectStatus){
         std::string msg = "s:";
         msg += (char)protocol;
-        if((err = write(server_fd, msg.c_str(), 3)) < 0) goto error;
-        if(read(server_fd, received_msg, 3) < 0) goto error;
+        if((err = write(server_fd, msg.c_str(), 3)) < 0) AERROR_CALL(error);
+        if(read(server_fd, received_msg, 3) < 0) AERROR_CALL(error);
         return received_msg[0];
     }
-    else goto error;
-error:
+    else AERROR_CALL(not_connected_error);
+    
+AERROR_AREA_START(error)
     AError_msg("Fail to send message to server!");
     throw SendFailedException("Send Failed");
-not_connected_error:
+AERROR_AREA_END
+
+AERROR_AREA_START(not_connected_error)
     AError_msg("You don't connect server!");
     throw SendFailedException("Not to connect server!");
+AERROR_AREA_END
 }
 
 template<>
@@ -38,9 +45,10 @@ void AClient<AUserType::AUSER_CLIENT>::connectToServer(){
     AError_success("Server Connect Complete!");
     connectStatus = true;
     return;
-error:
+AERROR_AREA_START(error)
     AError_msg("Fail to Connect Server!");
     throw ConnectFailedException("Connect Fail!");
+AERROR_AREA_END
 }
 
 template<>
@@ -52,9 +60,10 @@ void AClient<AUserType::AUSER_CLIENT>::closeToServer() {
         connectStatus = false;
         return;
     }
-error:
+AERROR_AREA_START(error)
     AError_msg("Client is not connect to server!");
     throw CloseFailedException("Close Failed");
+AERROR_AREA_END
 }
 
 template<>
@@ -64,11 +73,13 @@ void AClient<AUserType::AUSER_CLIENT>::giveFile(const char* file_name){
     char recv = sendToServer(AProtocolConst::GIVE_FILE);
     if(recv != 1) goto error;
     write(server_fd, msg.c_str(), msg.size() - 1);
-    
+    afile = new AFile(msg);
+    read_file_section(afile, server_fd);
     return;
-error:
+AERROR_AREA_START(error)
     AError_msg("Client is failed to download file!");
     throw DownloadFailedException("Dwonload Failed!");
+AERROR_AREA_END
 }
 
 template<>

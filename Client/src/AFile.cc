@@ -31,12 +31,13 @@ void AFile::openFile(const char* fileName) {
 	file_fd = open(fileName, O_CREAT | O_WRONLY, 0644);
 	if(file_fd < 0) {
 		open_status = false;
-		throw Exception::AFileOpenFailedException("File open Failed!);
+		AERROR_CALL(file_open_error);
 	}
 	else
 		open_status = true;
 AERROR_AREA_START(file_open_error)
-	throw AFileOpenFailedException;	
+    AError_msg("File Open Error!");
+	throw Exception::AFileOpenFailedException("File Open Error!");	
 AERROR_AREA_END
 }
 
