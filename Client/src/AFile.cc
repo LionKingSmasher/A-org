@@ -24,7 +24,8 @@ AFile::AFile(std::string filename){
 }
 
 AFile::~AFile(){
-    close(file_fd);
+    if(open_status)
+        close(file_fd);
 }
 
 void AFile::openFile(const char* fileName) {
@@ -43,6 +44,13 @@ AERROR_AREA_END
 
 void AFile::openFile(std::string&& fileName) {
 	openFile(fileName.c_str());
+}
+
+void AFile::closeFile(){
+    if(open_status)
+        close(file_fd);
+    else
+        throw Exception::CloseFailedException("You don't open file!");
 }
 
 void AFile::writeData(u8* arr, size_t size){

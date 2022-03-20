@@ -1,6 +1,11 @@
 #ifndef __APROTOCOL_CONST_H__
 #define __APROTOCOL_CONST_H__
 
+enum AProtocolMode {
+    NORMAL_STATE,
+    DOWNLOAD_STATE
+};
+
 enum AProtocolConst {
     CONNECT_CHECK = 0,
     CONNECT_OK,
@@ -12,6 +17,12 @@ enum AProtocolConst {
     SEND_FILE,
     SEND_FILE_NAME,
     SEND_FILE_SIZE
+};
+
+enum AProtocolConst4All {
+    A_CHECK,
+    A_OK,
+    A_FAIL
 };
 
 #endif

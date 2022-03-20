@@ -59,7 +59,7 @@ namespace A{
                 delete afile;
         }
 
-        char sendToServer(enum AProtocolConst);
+        char sendToServer(enum AProtocolConst, enum AProtocolMode = NORMAL_STATE);
         void connectToServer();
         void closeToServer();
         void giveFile(const char*);

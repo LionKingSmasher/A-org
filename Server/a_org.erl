@@ -21,9 +21,9 @@ init_server() ->
 	io:format("[A.org] Server Init...."),
 	case a_org_module:make_dir(?CLOUD_DIR) of
 		{error, Reason} -> 
-			io:format("[A.org] Init Failed!");
-		true ->
-			io:format("[A.org] Init Complete!")
+			io:format("[A.org] Init Failed!~n");
+		ok ->
+			io:format("[A.org] Init Complete!~n")
 	end.
 
 acceptState(LSocket) ->
@@ -72,7 +72,8 @@ download_state(ASocket) ->
 		{tcp, ASocket, <<"a:", Check/binary>>} ->
 			if
 				Check==<<1>> ->
-					io:format("[A.org] File Download Complete!~n");
+					io:format("[A.org] File Download Complete!~n"),
+					gen_tcp:send(ASocket, ?A_OK);
 				true ->
 					io:format("[A.org] File Download Failed!~n")
 			end

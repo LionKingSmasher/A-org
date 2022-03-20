@@ -24,6 +24,18 @@ DECLARE_EXCEPTION_FUNCTION(ConnectFailedException)
 DECLARE_EXCEPTION_FUNCTION(SendFailedException)
 //========================================================================
 
+//========================= CloseFailedException =========================
+DECLARE_EXCEPTION_FUNCTION(CloseFailedException)
+//========================================================================
+
 //======================= DownloadFailedException ========================
 DECLARE_EXCEPTION_FUNCTION(DownloadFailedException)
+//========================================================================
+
+//====================== AFileOpenFailedException ========================
+DECLARE_EXCEPTION_FUNCTION(AFileOpenFailedException)
+//========================================================================
+
+//======================= AFileCloseFailedException ======================
+DECLARE_EXCEPTION_FUNCTION(AFileCloseFailedException)
 //========================================================================
